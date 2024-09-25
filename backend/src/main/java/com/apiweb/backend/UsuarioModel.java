@@ -1,15 +1,19 @@
 package com.apiweb.backend;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 
-public class Usuario {
+public class UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
