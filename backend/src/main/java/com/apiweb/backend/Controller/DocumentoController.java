@@ -8,16 +8,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apiweb.backend.Model.UsuarioModel;
-import com.apiweb.backend.Service.IIsuarioService;
+import com.apiweb.backend.Model.DocumentoModel;
+import com.apiweb.backend.Service.IDocumentoService;
 
 @RestController
-@RequestMapping ("/apiweb/v1/usuarios")
-public class UsuarioController {
+@RequestMapping("/apiweb/v1/documentos")
+public class DocumentoController {
     @Autowired
-    IIsuarioService usuarioService;
-    @PostMapping ("/insertar")
-    public ResponseEntity<String>crearUsuario(@RequestBody UsuarioModel usuario){
-        return new ResponseEntity<String>(usuarioService.guardarUsuario(usuario), HttpStatus.OK);
+    IDocumentoService documentoService;
+    @PostMapping("/insertar")
+    public ResponseEntity<String>crearDocumento(@RequestBody DocumentoModel documento){
+        return new ResponseEntity<String>(documentoService.guardarDocumento(documento), HttpStatus.OK);
     }
+    
 }
