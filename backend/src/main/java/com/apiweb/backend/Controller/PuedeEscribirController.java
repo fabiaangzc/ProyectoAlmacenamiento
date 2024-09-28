@@ -13,7 +13,7 @@ import com.apiweb.backend.Service.IPuedeEscribirService;
 
 
 @RestController
-@RequestMapping("/apiweb/v1/puededescargar")//endpoint
+@RequestMapping("/apiweb/v1/puedeescribir")//endpoint
 
 public class PuedeEscribirController {
     @Autowired IPuedeEscribirService puedeEscribirService;

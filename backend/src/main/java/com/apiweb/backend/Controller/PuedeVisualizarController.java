@@ -13,7 +13,7 @@ import com.apiweb.backend.Service.IPuedeVisualizarService;
 
 
 @RestController
-@RequestMapping("/apiweb/v1/puededescargar")//endpoint
+@RequestMapping("/apiweb/v1/puedevisualizar")//endpoint
 
 public class PuedeVisualizarController {
     @Autowired IPuedeVisualizarService puedeVisualizarService;
