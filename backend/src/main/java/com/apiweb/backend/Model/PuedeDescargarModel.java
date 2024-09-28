@@ -1,6 +1,5 @@
 package com.apiweb.backend.Model;
 
-import java.sql.Time;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
