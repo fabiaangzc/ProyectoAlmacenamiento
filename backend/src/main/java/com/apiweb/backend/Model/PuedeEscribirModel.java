@@ -26,6 +26,7 @@ public class PuedeEscribirModel {
     public Date fecha;
     @Column (name="usuario_idUsuario")
     public Integer idUsuario;
+    @Column (name="documento_idDocumento")
     public Integer idDocumento;
     @Column (name="rol")
     @Enumerated (EnumType.STRING)
