@@ -16,7 +16,6 @@ import com.apiweb.backend.Service.CategoriaService;
 public class CategoriaController {
 
     @Autowired
-<<<<<<< HEAD
     CategoriaService categoriaService;
 
     @PostMapping("/insertar")
@@ -24,14 +23,3 @@ public class CategoriaController {
         return new ResponseEntity<String>(categoriaService.guardarCategoria(categoria), HttpStatus.OK);
     }
 }
-
-=======
-    ICategoriaService categoriaService;
-    
-    @PostMapping("/insertar")
-    public ResponseEntity<String> crearCategoria(@RequestBody CategoriaModel categoria) {
-        categoriaService.guardarCategoria(categoria);
-        return new ResponseEntity<>("Categoría creada exitosamente", HttpStatus.OK);
-    }
-}
->>>>>>> 79cecbcf6ca68229a1fcda4df3e685b986a56f0d
