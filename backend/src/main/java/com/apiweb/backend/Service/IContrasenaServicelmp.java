@@ -14,7 +14,7 @@ public class IContrasenaServicelmp implements IContrasenaService {
     @Override
     public String guardarContrasena(ContrasenaModel contrasena) {
         contrasenaRepository.save(contrasena);
-        return "La contraseña" + contrasena.getClave() + "fue guardada correctamente";
+        return "La contraseña: " + contrasena.getClave() + " fue guardada correctamente";
     }
     
 }

@@ -1,6 +1,6 @@
-package com.apiweb.backend.Enum;
+package com.apiweb.backend.Model.ENUM;
 
-public enum CategoriaEnum {
+public enum Categoria {
     DESARROLLO_WEB,
     BASES_DE_DATOS_RELACIONALES,
     BASES_DE_DATOS_NOSQL,

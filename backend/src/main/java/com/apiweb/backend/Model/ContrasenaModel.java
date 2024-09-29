@@ -3,6 +3,10 @@ package com.apiweb.backend.Model;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -20,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 public class ContrasenaModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idContraseña;
 
     @ManyToOne
@@ -27,6 +32,7 @@ public class ContrasenaModel {
     private UsuarioModel usuario;
 
     private String clave;
+    @Enumerated(EnumType.STRING)
     private Estado estado;
 
     private LocalDateTime fechaCreacion;
