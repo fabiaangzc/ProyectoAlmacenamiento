@@ -7,7 +7,7 @@ import com.apiweb.backend.Model.DocumentoModel;
 import com.apiweb.backend.Repository.IDocumentoRepository;
 
 @Service
-public class IDocumentoServicelmp implements IDocumentoService{
+public class DocumentoServicelmp implements IDocumentoService{
     @Autowired
     IDocumentoRepository documentoRepository;
     @Override

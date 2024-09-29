@@ -2,6 +2,6 @@ package com.apiweb.backend.Service;
 
 import com.apiweb.backend.Model.UsuarioModel;
 
-public interface IIsuarioService {
+public interface IUsuarioService {
     String guardarUsuario(UsuarioModel usuario);
 }
