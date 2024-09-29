@@ -7,7 +7,7 @@ import com.apiweb.backend.Model.ContrasenaModel;
 import com.apiweb.backend.Repository.IContrasenaRepository;
 
 @Service
-public class IContrasenaServicelmp implements IContrasenaService {
+public class ContrasenaServicelmp implements IContrasenaService {
     @Autowired
     IContrasenaRepository contrasenaRepository;
 
