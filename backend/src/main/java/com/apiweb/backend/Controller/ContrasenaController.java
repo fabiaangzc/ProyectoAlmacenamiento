@@ -16,6 +16,7 @@ import com.apiweb.backend.Service.IContrasenaService;
 public class ContrasenaController {
     @Autowired
     IContrasenaService contrasenaService;
+    
     @PostMapping("/insertar")
     public ResponseEntity<String>crearContrasena(@RequestBody ContrasenaModel contrasena){
         return new ResponseEntity<>(contrasenaService.guardarContrasena(contrasena), HttpStatus.OK);

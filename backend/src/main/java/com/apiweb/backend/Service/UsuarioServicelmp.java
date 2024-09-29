@@ -7,7 +7,7 @@ import com.apiweb.backend.Model.UsuarioModel;
 import com.apiweb.backend.Repository.IIusuarioRepository;
 
 @Service
-public class UsuarioServicelmp implements IIsuarioService{
+public class UsuarioServicelmp implements IUsuarioService{
     @Autowired
     IIusuarioRepository usuarioRepository;
     @Override

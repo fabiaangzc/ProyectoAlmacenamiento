@@ -8,32 +8,31 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
 @Data
-@Table(name="documento")
+@Table(name = "Comentario")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
-public class DocumentoModel {
+public class ComentarioModel {
     @Id
-    private Integer idDocumento;
+    private Integer idComentario;
+
+    private LocalDateTime fecha;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private UsuarioModel usuario;
 
     @ManyToOne
-    @JoinColumn(name = "idCategoria")
-    private CategoriaModel categoria;
+    @JoinColumn(name = "idDocumento")
+    private DocumentoModel documento;
 
-    private String descripcion;
-    private String url;
+    private String contenido;
 
-    private Visibilidad visibilidad;
-
-    public enum Visibilidad {
-        Público,
-        Privado
-    }
+    @ManyToOne
+    @JoinColumn(name = "SubIdComentario")
+    private ComentarioModel subComentario;
+    
 }

@@ -8,16 +8,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apiweb.backend.Model.UsuarioModel;
-import com.apiweb.backend.Service.IUsuarioService;
+import com.apiweb.backend.Model.ComentarioModel;
+import com.apiweb.backend.Service.IComentarioService;
 
 @RestController
-@RequestMapping ("/apiweb/v1/usuarios")
-public class UsuarioController {
+@RequestMapping("/apiweb/v1/comentarios")
+public class ComentarioController {
     @Autowired
-    IUsuarioService usuarioService;
-    @PostMapping ("/insertar")
-    public ResponseEntity<String>crearUsuario(@RequestBody UsuarioModel usuario){
-        return new ResponseEntity<String>(usuarioService.guardarUsuario(usuario), HttpStatus.OK);
+    IComentarioService comentarioService;
+
+    @PostMapping("/insertar")
+    public ResponseEntity<String>crearComentario(@RequestBody ComentarioModel comentario){
+        return new ResponseEntity<>(comentarioService.guardarComentario(comentario), HttpStatus.OK);
     }
+    
 }
