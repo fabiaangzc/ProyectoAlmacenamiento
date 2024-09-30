@@ -13,7 +13,7 @@ public class DocumentoServicelmp implements IDocumentoService{
     @Override
     public String guardarDocumento(DocumentoModel documento) {
         documentoRepository.save(documento);
-        return "El documento" + documento.getDescripcion() + "fue creado exitosamente";
+        return "El documento " + documento.getDescripcion() + " fue creado exitosamente";
     }
     
 }

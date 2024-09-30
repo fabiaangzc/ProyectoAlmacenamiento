@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.apiweb.backend.Model.CategoriaModel;
-import com.apiweb.backend.Repository.CategoriaRepository;
+import com.apiweb.backend.Repository.ICategoriaRepository;
 
 @Service
-public class CategoriaServicelmp implements CategoriaService{
+public class CategoriaServicelmp implements ICategoriaService{
     @Autowired
-    CategoriaRepository CategoriaRepository;
+    ICategoriaRepository CategoriaRepository;
     @Override
     public String guardarCategoria(CategoriaModel Categoria){
         CategoriaRepository.save(Categoria);

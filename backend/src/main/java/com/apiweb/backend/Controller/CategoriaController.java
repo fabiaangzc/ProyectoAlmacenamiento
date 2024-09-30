@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apiweb.backend.Model.CategoriaModel;
-import com.apiweb.backend.Service.CategoriaService;
+import com.apiweb.backend.Service.ICategoriaService;
 
 @RestController
 @RequestMapping ("/apiweb/v1/categorias")
 public class CategoriaController {
 
     @Autowired
-    CategoriaService categoriaService;
+    ICategoriaService categoriaService;
 
     @PostMapping("/insertar")
     public ResponseEntity<String> crearCategoria(@RequestBody CategoriaModel categoria) {

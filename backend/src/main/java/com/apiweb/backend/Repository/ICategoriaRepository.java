@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.apiweb.backend.Model.CategoriaModel;
 
-public interface CategoriaRepository extends JpaRepository<CategoriaModel, Integer>{
+public interface ICategoriaRepository extends JpaRepository<CategoriaModel, Integer>{
     //Futuras consultas
 }
