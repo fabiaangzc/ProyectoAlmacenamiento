@@ -36,7 +36,7 @@ public class DocumentoModel {
     private Visibilidad visibilidad;
 
     public enum Visibilidad {
-        Público,
+        Publico,
         Privado
     }
 }

@@ -33,6 +33,7 @@ public class ContrasenaModel {
 
     private String clave;
     @Enumerated(EnumType.STRING)
+    
     private Estado estado;
 
     private LocalDateTime fechaCreacion;

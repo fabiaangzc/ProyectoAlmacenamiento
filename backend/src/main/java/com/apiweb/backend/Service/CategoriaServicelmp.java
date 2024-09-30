@@ -13,6 +13,6 @@ public class CategoriaServicelmp implements ICategoriaService{
     @Override
     public String guardarCategoria(CategoriaModel Categoria){
         CategoriaRepository.save(Categoria);
-        return "La categoria " + Categoria.getCategoria() + " fue creado correctamente";
+        return "La categoria " + Categoria.getNombre() + " fue creada correctamente";
     }
 }

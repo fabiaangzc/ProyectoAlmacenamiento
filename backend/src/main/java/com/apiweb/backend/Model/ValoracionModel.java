@@ -25,15 +25,16 @@ public class ValoracionModel {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
-    private UsuarioModel idUsuario;
+    private UsuarioModel usuario;
 
     @ManyToOne
     @JoinColumn(name = "idDocumento")
-    private DocumentoModel idDocumento;
+    private DocumentoModel documento;
 
     private Date fecha;
 
     private Byte puntuacion;
+
     public void setPuntuacion(Byte puntuacion) {
         if (puntuacion < 1 || puntuacion > 5) {
             throw new IllegalArgumentException("La puntuación debe estar entre 1 y 5");

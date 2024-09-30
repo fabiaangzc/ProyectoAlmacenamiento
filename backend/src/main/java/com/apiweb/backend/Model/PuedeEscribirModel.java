@@ -4,11 +4,12 @@ import java.util.Date;
 
 import com.apiweb.backend.Model.ENUM.Rol;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,14 +23,19 @@ import lombok.NoArgsConstructor;
 
 public class PuedeEscribirModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer idEscribir;
+
     public Date fecha;
-    @Column (name="usuario_idUsuario")
-    public Integer idUsuario;
-    @Column (name="documento_idDocumento")
-    public Integer idDocumento;
-    @Column (name="rol")
-    @Enumerated (EnumType.STRING)
+
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private UsuarioModel usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "idDocumento")
+    private DocumentoModel documento;
+
     public Rol rol;
 
 }

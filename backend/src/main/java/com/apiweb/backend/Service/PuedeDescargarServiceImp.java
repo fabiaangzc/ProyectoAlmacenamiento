@@ -11,8 +11,8 @@ public class PuedeDescargarServiceImp implements IPuedeDescargarService {
     @Override
     public String crearPuedeDescargar(PuedeDescargarModel puedeDescargar) {
         puedeDescargarRepository.save(puedeDescargar);
-        return "La descarga se ha realizado con éxito por el usuario con id: "+puedeDescargar.getIdUsuario() 
-        +" a las " +puedeDescargar.getHora();
+        return "La descarga se ha realizado con éxito por el usuario con ID: "+puedeDescargar.getUsuario().getIdUsuario() 
+        +" a las " +puedeDescargar.getFecha();
 
     }
 }

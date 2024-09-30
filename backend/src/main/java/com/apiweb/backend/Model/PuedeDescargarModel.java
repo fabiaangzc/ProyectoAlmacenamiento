@@ -1,13 +1,16 @@
 package com.apiweb.backend.Model;
 
-import java.util.Date;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 
 @Data
 @Entity
@@ -17,10 +20,17 @@ import lombok.NoArgsConstructor;
 
 public class PuedeDescargarModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer idDescarga;
-    public Integer idDocumento;
-    public Integer idUsuario;
-    public Date hora;
+
+    @ManyToOne
+    @JoinColumn(name = "idDocumento")
+    public DocumentoModel documento;
+
+    @ManyToOne
+    @JoinColumn(name ="idUsuario")
+    public UsuarioModel Usuario;
+
     public Date fecha;
 
 }
