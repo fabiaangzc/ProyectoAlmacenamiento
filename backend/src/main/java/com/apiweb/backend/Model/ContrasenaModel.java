@@ -25,15 +25,15 @@ import lombok.NoArgsConstructor;
 public class ContrasenaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idContraseña;
+    private Integer idContrasena;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private UsuarioModel usuario;
 
     private String clave;
+
     @Enumerated(EnumType.STRING)
-    
     private Estado estado;
 
     private LocalDateTime fechaCreacion;
@@ -43,5 +43,4 @@ public class ContrasenaModel {
         Expirada
     }
 
-}
-    
+}    

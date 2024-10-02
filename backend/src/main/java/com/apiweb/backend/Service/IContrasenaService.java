@@ -4,4 +4,6 @@ import com.apiweb.backend.Model.ContrasenaModel;
 
 public interface IContrasenaService {
     String guardarContrasena(ContrasenaModel contrasena);
+
+    void eliminarContrasena(Integer idUsuario);
 }
