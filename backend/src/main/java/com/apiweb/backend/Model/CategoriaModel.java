@@ -18,6 +18,7 @@ public class CategoriaModel {
 
     @Id
     private Integer idCategoria;
+    
     private String nombre;
 
     @ManyToOne
