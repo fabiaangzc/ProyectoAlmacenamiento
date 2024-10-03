@@ -4,4 +4,5 @@ import com.apiweb.backend.Model.CategoriaModel;
 
 public interface ICategoriaService {
     String guardarCategoria(CategoriaModel Categoria);
+    void eliminarCategoria(Integer idCategoria);
 }

@@ -39,4 +39,5 @@ public class DocumentoModel {
         Publico,
         Privado
     }
+    
 }

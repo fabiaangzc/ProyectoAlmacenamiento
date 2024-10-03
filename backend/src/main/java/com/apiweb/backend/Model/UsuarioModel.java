@@ -1,6 +1,7 @@
 package com.apiweb.backend.Model;
 
 import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,5 +32,5 @@ public class UsuarioModel {
     private String respuestaSecreta;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ContrasenaModel> contrasenas; // Cambiado a java.util.List
+    private List<ContrasenaModel> contrasenas;
 }
