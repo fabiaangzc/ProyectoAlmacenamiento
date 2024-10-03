@@ -7,12 +7,22 @@ import com.apiweb.backend.Model.CategoriaModel;
 import com.apiweb.backend.Repository.ICategoriaRepository;
 
 @Service
-public class CategoriaServicelmp implements ICategoriaService{
+public class CategoriaServicelmp implements ICategoriaService {
+
     @Autowired
-    ICategoriaRepository CategoriaRepository;
+    ICategoriaRepository categoriaRepository;
+
     @Override
-    public String guardarCategoria(CategoriaModel Categoria){
-        CategoriaRepository.save(Categoria);
-        return "La categoria " + Categoria.getNombre() + " fue creada correctamente";
+    public String guardarCategoria(CategoriaModel categoria) {
+        if (categoria.getIdCategoria() != null && categoriaRepository.existsById(categoria.getIdCategoria())) {
+            throw new IllegalArgumentException("La categoría con el ID proporcionado ya existe.");
+        }
+        categoriaRepository.save(categoria);
+        return "La categoría " + categoria.getNombre() + " fue creada correctamente";
+    }
+
+    @Override
+    public void eliminarCategoria(Integer idCategoria) {
+        categoriaRepository.deleteById(idCategoria);
     }
 }

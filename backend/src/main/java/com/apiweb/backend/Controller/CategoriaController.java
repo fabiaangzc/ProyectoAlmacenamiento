@@ -12,7 +12,7 @@ import com.apiweb.backend.Model.CategoriaModel;
 import com.apiweb.backend.Service.ICategoriaService;
 
 @RestController
-@RequestMapping ("/apiweb/v1/categorias")
+@RequestMapping("/apiweb/v1/categorias")
 public class CategoriaController {
 
     @Autowired
@@ -20,6 +20,13 @@ public class CategoriaController {
 
     @PostMapping("/insertar")
     public ResponseEntity<String> crearCategoria(@RequestBody CategoriaModel categoria) {
-        return new ResponseEntity<String>(categoriaService.guardarCategoria(categoria), HttpStatus.OK);
+        try {
+            String response = categoriaService.guardarCategoria(categoria);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al crear la categoría", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
