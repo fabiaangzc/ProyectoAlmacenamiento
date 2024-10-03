@@ -13,8 +13,11 @@ public class ComentarioServicelmp implements IComentarioService{
 
     @Override
     public String guardarComentario(ComentarioModel comenario) {
+        if (comenario.getIdComentario() != null && comentarioRepository.existsById(comenario.getIdComentario())) {
+            throw new IllegalArgumentException("El comentario con el ID proporcionado ya existe.");
+        }
         comentarioRepository.save(comenario);
-        return "El comentario se a realizado correctamente.";
+        return "El comentario " + comenario.getIdComentario() + " fue creado correctamente";
     }
 
 }

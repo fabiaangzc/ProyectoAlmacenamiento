@@ -1,6 +1,10 @@
 package com.apiweb.backend.Model;
 
+import com.apiweb.backend.Model.ENUM.Visibilidad;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,11 +37,7 @@ public class DocumentoModel {
     private String descripcion;
     private String url;
 
+    @Enumerated(EnumType.STRING)
     private Visibilidad visibilidad;
-
-    public enum Visibilidad {
-        Publico,
-        Privado
-    }
     
 }

@@ -27,13 +27,10 @@ public class UsuarioServicelmp implements IUsuarioService {
     @Override
     @Transactional
     public String eliminarUsuario(Integer idUsuario) {
-        // Comprobar si el usuario existe
         if (usuarioRepository.existsById(idUsuario)) {
-            // Eliminar todas las contraseñas asociadas al usuario
-            contrasenaRepository.deleteByUsuario_IdUsuario(idUsuario); // Esto eliminará las contraseñas
-
-            // Eliminar el usuario
+            contrasenaRepository.deleteByUsuario_IdUsuario(idUsuario);
             usuarioRepository.deleteById(idUsuario);
+            
 
             return "Usuario y sus contraseñas han sido eliminados correctamente.";
         } else {

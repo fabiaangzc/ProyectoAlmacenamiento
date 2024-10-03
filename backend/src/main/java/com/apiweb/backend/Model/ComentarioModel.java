@@ -18,7 +18,7 @@ import java.sql.Date;
 @Entity
 public class ComentarioModel {
     @Id
-    private Integer idComentario;
+    private Integer idComentario;   
 
     private Date fecha;
 
@@ -34,6 +34,6 @@ public class ComentarioModel {
 
     @ManyToOne
     @JoinColumn(name = "SubIdComentario")
-    private ComentarioModel subComentario;
+    private ComentarioModel subIdComentario;
     
 }

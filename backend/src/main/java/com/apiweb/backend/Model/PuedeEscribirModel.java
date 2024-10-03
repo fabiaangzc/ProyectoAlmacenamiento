@@ -5,6 +5,8 @@ import java.util.Date;
 import com.apiweb.backend.Model.ENUM.Rol;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,6 +38,7 @@ public class PuedeEscribirModel {
     @JoinColumn(name = "idDocumento")
     private DocumentoModel documento;
 
+    @Enumerated(EnumType.STRING)
     public Rol rol;
 
 }
