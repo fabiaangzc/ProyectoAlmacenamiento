@@ -6,7 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +34,12 @@ public class PuedeDescargarModel {
     @JoinColumn(name ="idUsuario")
     public UsuarioModel Usuario;
 
-    public Date fecha;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha;
+
+    @PrePersist
+    protected void onCreate() {
+        fecha = new Date();
+    }
 
 }

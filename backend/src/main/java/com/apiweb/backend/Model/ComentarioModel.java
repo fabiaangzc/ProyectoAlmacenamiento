@@ -1,8 +1,6 @@
 package com.apiweb.backend.Model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,8 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-
 @Data
 @Table(name = "Comentario")
 @AllArgsConstructor
@@ -20,10 +16,7 @@ import java.sql.Date;
 @Entity
 public class ComentarioModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idComentario;
-
-    private Date fecha;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
@@ -37,6 +30,6 @@ public class ComentarioModel {
 
     @ManyToOne
     @JoinColumn(name = "SubIdComentario")
-    private ComentarioModel subComentario;
+    private ComentarioModel subIdComentario;
     
 }

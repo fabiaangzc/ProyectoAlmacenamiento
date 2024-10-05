@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "dbb61cdf-6ad2-4883-8367-0b403986b9dc",
+		"name": "Pruebas Proyecto DOCTIC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38283995",
+		"_collection_link": "https://doctic.postman.co/workspace/DocTic-Workspace~af0bd8d4-5a80-4ff3-82ba-a64bd25ea23b/collection/38283995-dbb61cdf-6ad2-4883-8367-0b403986b9dc?action=share&source=collection_link&creator=38283995"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Joseadad777\",\r\n    \"email\": \"jose11@gmailadad.com\",\r\n    \"nickname\": \"Jose123\",\r\n    \"ciudad\": \"Bogota\",\r\n    \"departamento\": \"Cundinamarca\",\r\n    \"preguntaSecreta\": \"¿Que edad tengo?\",\r\n    \"respuestaSecreta\": \"34\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/usuarios/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"usuarios",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/usuarios/eliminar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"usuarios",
+								"eliminar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Crear categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"idCategoria\": 1,\r\n    \"nombre\": \"Desarrollo web\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/categorias/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"categorias",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear subCategoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCategoria\": 2,\r\n    \"nombre\": \"Feli\",\r\n    \"subIdCategoria\": {\r\n        \"idCategoria\": 1\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/categorias/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"categorias",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Escribir",
+			"item": [
+				{
+					"name": "Crear puede escrbir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rol\": \"Publica\",\r\n    \"usuario\":{\r\n        \"idUsuario\": 1\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/puedeescribir/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"puedeescribir",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar puedeEscribir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/puedeescribir/eliminar/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"puedeescribir",
+								"eliminar",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Documentos",
+			"item": [
+				{
+					"name": "Crear documento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"escribir\":{\r\n        \"idEscribir\": 2\r\n    },\r\n    \"categoria\":{\r\n        \"idCategoria\":1\r\n    },\r\n    \"descripcion\": \"documento de prueba Publico\",\r\n    \"url\":\"http:/loquesea.como.co\",\r\n    \"visibilidad\":\"Publico\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/documentos/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"documentos",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar documento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/documentos/eliminar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"documentos",
+								"eliminar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contraseñas",
+			"item": [
+				{
+					"name": "Crear contraseña",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"clave\": \"1234,ññ,561233\",\r\n  \"estado\": \"Activa\",\r\n  \"usuario\":{\r\n        \"idUsuario\":1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apieweb/v1/contrasenas/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apieweb",
+								"v1",
+								"contrasenas",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar contraseña",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"nuevaClave\": \"Juanito1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apieweb/v1/contrasenas/modificar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apieweb",
+								"v1",
+								"contrasenas",
+								"modificar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentarios",
+			"item": [
+				{
+					"name": "Crear comentario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idComentario\": 1, \r\n    \"contenido\": \"Muy buen documento, muy informativoooo\",\r\n    \"usuario\": {\r\n        \"idUsuario\": 1\r\n    },\r\n    \"documento\": {\r\n        \"idDocumento\": 2\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/comentarios/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"comentarios",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Subcomentario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"idComentario\": 2,\r\n    \"contenido\": \"Prueba de subComentario\",\r\n    \"usuario\": {\r\n        \"idUsuario\": 1\r\n    },\r\n    \"documento\": {\r\n        \"idDocumento\": 2\r\n    },\r\n    \"subIdComentario\": {\r\n        \"idComentario\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/comentarios/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"comentarios",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Valoraciones",
+			"item": [
+				{
+					"name": "Crear valoracion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\": {\r\n        \"idUsuario\": 1\r\n    },\r\n    \"documento\": {\r\n        \"idDocumento\": 2\r\n    },\r\n    \"puntuacion\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/valoraciones/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"valoraciones",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Visualizaciones",
+			"item": [
+				{
+					"name": "Crear puede visualizacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\":{\r\n        \"idUsuario\": 1\r\n    },\r\n    \"documento\":{\r\n        \"idDocumento\": 2\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/puedevisualizar/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"puedevisualizar",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Descargas",
+			"item": [
+				{
+					"name": "Crear puede descargar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"documento\":{\r\n        \"idDocumento\": 2\r\n    },\r\n    \"usuario\":{\r\n        \"idUsuario\": 1\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiweb/v1/puededescargar/insertar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiweb",
+								"v1",
+								"puededescargar",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

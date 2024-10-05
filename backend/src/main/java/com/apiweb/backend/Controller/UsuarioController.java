@@ -3,6 +3,8 @@ package com.apiweb.backend.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +17,15 @@ import com.apiweb.backend.Service.IUsuarioService;
 @RequestMapping ("/apiweb/v1/usuarios")
 public class UsuarioController {
     @Autowired
-    IUsuarioService usuarioService;
+    private IUsuarioService usuarioService;
+
     @PostMapping ("/insertar")
     public ResponseEntity<String>crearUsuario(@RequestBody UsuarioModel usuario){
         return new ResponseEntity<String>(usuarioService.guardarUsuario(usuario), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String>eliminarUsuario(@PathVariable("id") Integer idUsuario){
+        return new ResponseEntity<>(usuarioService.eliminarUsuario(idUsuario), HttpStatus.OK);
     }
 }

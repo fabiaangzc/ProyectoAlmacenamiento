@@ -1,7 +1,5 @@
 package com.apiweb.backend.Model;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -25,23 +23,19 @@ import lombok.NoArgsConstructor;
 public class ContrasenaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idContraseña;
+    private Integer idContrasena;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private UsuarioModel usuario;
 
     private String clave;
-    @Enumerated(EnumType.STRING)
-    
-    private Estado estado;
 
-    private LocalDateTime fechaCreacion;
+    @Enumerated(EnumType.STRING)
+    private Estado estado;
 
     public enum Estado {
         Activa,
         Expirada
     }
-
-}
-    
+}    

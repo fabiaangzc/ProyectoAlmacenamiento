@@ -1,8 +1,5 @@
 package com.apiweb.backend.Model;
 
-import java.util.Date;
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,25 +11,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@Table (name="puedevisualizar")
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Entity
+@Table(name = "puedevisualizar")
 public class PuedeVisualizarModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer idVisualizacion;
-
-    public Date fecha;
+    private Integer idVisualizacion;
 
     @ManyToOne
-    @JoinColumn(name ="idUsuario")
-    public UsuarioModel Usuario;
+    @JoinColumn(name = "idUsuario")
+    private UsuarioModel usuario;
 
     @ManyToOne
     @JoinColumn(name = "idDocumento")
-    public DocumentoModel documento;
+    private DocumentoModel documento;
 
+    public Integer getIdUsuario() {
+        return usuario != null ? usuario.getIdUsuario() : null;
+    }
+
+    public Integer getIdDocumento() {
+        return documento != null ? documento.getIdDocumento() : null;
+    }
 }
