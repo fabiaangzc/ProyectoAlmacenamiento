@@ -10,17 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apiweb.backend.Model.ValoracionModel;
 import com.apiweb.backend.Service.IValoracionService;
-
 @RestController
 @RequestMapping("/apiweb/v1/valoraciones")
 public class ValoracionController {
 
     @Autowired
     IValoracionService valoracionService;
-
     @PostMapping("/insertar")
-    public ResponseEntity<String> crearValoracion(@RequestBody ValoracionModel valoracion){
-        return new ResponseEntity<String>(valoracionService.guardarValoracion(valoracion), HttpStatus.OK);
+    public ResponseEntity<String> crearValoracion(@RequestBody ValoracionModel valoracion) {
+        return new ResponseEntity<>(valoracionService.guardarValoracion(valoracion), HttpStatus.OK);
     }
-    
 }
+
