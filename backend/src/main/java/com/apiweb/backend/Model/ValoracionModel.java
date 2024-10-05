@@ -1,7 +1,5 @@
 package com.apiweb.backend.Model;
 
-import java.sql.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,8 +29,6 @@ public class ValoracionModel {
     @JoinColumn(name = "idDocumento")
     private DocumentoModel documento;
 
-    private Date fecha;
-
     private Byte puntuacion;
 
     public void setPuntuacion(Byte puntuacion) {
@@ -40,5 +36,13 @@ public class ValoracionModel {
             throw new IllegalArgumentException("La puntuación debe estar entre 1 y 5");
         }
         this.puntuacion = puntuacion;
+    }
+
+    public Integer getIdUsuario() {
+        return usuario != null ? usuario.getIdUsuario() : null;
+    }
+
+    public Integer getIdDocumento() {
+        return documento != null ? documento.getIdDocumento() : null;
     }
 }

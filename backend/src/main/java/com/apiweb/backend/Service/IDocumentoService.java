@@ -3,6 +3,6 @@ package com.apiweb.backend.Service;
 import com.apiweb.backend.Model.DocumentoModel;
 
 public interface IDocumentoService {
-    String guardarDocumento(DocumentoModel documento);   
-    String eliminarDocumento(Integer idDocumento);
+    String guardarDocumento(DocumentoModel documento);
+    String eliminarDocumento(Integer idDocumento); 
 }

@@ -18,14 +18,13 @@ import com.apiweb.backend.Service.IDocumentoService;
 public class DocumentoController {
     @Autowired
     IDocumentoService documentoService;
-    @PostMapping("/insertar")
-    public ResponseEntity<String>crearDocumento(@RequestBody DocumentoModel documento){
+
+     @PostMapping ("/insertar")
+    public ResponseEntity<String>guardarDocumento(@RequestBody DocumentoModel documento){
         return new ResponseEntity<String>(documentoService.guardarDocumento(documento), HttpStatus.OK);
     }
-    
     @DeleteMapping("/eliminar/{id}")
-public ResponseEntity<String> eliminarDocumento(@PathVariable("id") Integer idDocumento) {
-    return new ResponseEntity<>(documentoService.eliminarDocumento(idDocumento), HttpStatus.OK);
-}
-
+    public ResponseEntity<String> eliminarDocumento(@PathVariable("id") Integer idDocumento) {
+        return new ResponseEntity<>(documentoService.eliminarDocumento(idDocumento), HttpStatus.OK);
+    }
 }

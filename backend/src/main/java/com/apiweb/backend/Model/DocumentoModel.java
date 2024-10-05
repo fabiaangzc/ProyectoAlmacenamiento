@@ -27,12 +27,12 @@ public class DocumentoModel {
     private Integer idDocumento;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private UsuarioModel usuario;
-
-    @ManyToOne
     @JoinColumn(name = "idCategoria")
     private CategoriaModel categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "idEscribir")
+    private PuedeEscribirModel escribir;
 
     private String descripcion;
     private String url;

@@ -9,8 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-
 @Data
 @Table(name = "Comentario")
 @AllArgsConstructor
@@ -18,9 +16,7 @@ import java.sql.Date;
 @Entity
 public class ComentarioModel {
     @Id
-    private Integer idComentario;   
-
-    private Date fecha;
+    private Integer idComentario;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")

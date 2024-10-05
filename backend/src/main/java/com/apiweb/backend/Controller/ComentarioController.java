@@ -19,7 +19,11 @@ public class ComentarioController {
 
     @PostMapping("/insertar")
     public ResponseEntity<String>crearComentario(@RequestBody ComentarioModel comentario){
-        return new ResponseEntity<>(comentarioService.guardarComentario(comentario), HttpStatus.OK);
+       try {
+           String response = comentarioService.guardarComentario(comentario);
+           return new ResponseEntity<>(response, HttpStatus.OK);
+       } catch (IllegalArgumentException e) {
+           return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+       }
     }
-    
 }

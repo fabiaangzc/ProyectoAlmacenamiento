@@ -1,7 +1,5 @@
 package com.apiweb.backend.Model;
 
-import java.util.Date;
-
 import com.apiweb.backend.Model.ENUM.Rol;
 
 import jakarta.persistence.Entity;
@@ -28,15 +26,9 @@ public class PuedeEscribirModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer idEscribir;
 
-    public Date fecha;
-
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private UsuarioModel usuario;
-
-    @ManyToOne
-    @JoinColumn(name = "idDocumento")
-    private DocumentoModel documento;
 
     @Enumerated(EnumType.STRING)
     public Rol rol;

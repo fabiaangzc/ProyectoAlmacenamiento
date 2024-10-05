@@ -1,7 +1,5 @@
 package com.apiweb.backend.Model;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -36,11 +34,8 @@ public class ContrasenaModel {
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
-    private LocalDateTime fechaCreacion;
-
     public enum Estado {
         Activa,
         Expirada
     }
-
 }    

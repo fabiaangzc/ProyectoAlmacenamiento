@@ -20,7 +20,12 @@ public class ValoracionController {
 
     @PostMapping("/insertar")
     public ResponseEntity<String> crearValoracion(@RequestBody ValoracionModel valoracion){
-        return new ResponseEntity<String>(valoracionService.guardarValoracion(valoracion), HttpStatus.OK);
+        try {
+            String response = valoracionService.guardarValoracion(valoracion);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
     
 }

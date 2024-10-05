@@ -5,4 +5,5 @@ import com.apiweb.backend.Model.PuedeEscribirModel;
 public interface IPuedeEscribirService {
     String crearPuedeEscribir (PuedeEscribirModel puedeEscribir);
 
+    String eliminarPuedeEscribir (Integer idEscribir);
 }
