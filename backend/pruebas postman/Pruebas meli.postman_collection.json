@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "72e66685-eb0a-458b-a06d-bcba72061a00",
+		"name": "Pruebas meli",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38283991"
+	},
+	"item": [
+		{
+			"name": "Prueba HistorialAcciones",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/apiweb/v1/historialacciones/acciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"apiweb",
+						"v1",
+						"historialacciones",
+						"acciones"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

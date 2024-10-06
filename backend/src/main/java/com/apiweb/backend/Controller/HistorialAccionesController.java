@@ -19,11 +19,12 @@ public class HistorialAccionesController {
     public HistorialAccionesController() {
     }
 
-    @GetMapping("/listar")
-    public List<HistorialAccionesModel> obtenerHistorial() {
-        return historialAccionesService.obtenerHistorialAcciones();
+    @GetMapping("/acciones")
+    public ResponseEntity<List<HistorialAccionesModel>> obtenerHistorial() {
+        List<HistorialAccionesModel> historial = historialAccionesService.obtenerHistorialAcciones();
+        return ResponseEntity.ok(historial);
     }
-
+    
     @PostMapping("/crear")
     public ResponseEntity<HistorialAccionesModel> crearHistorial(@RequestBody HistorialAccionesModel historial) {
         HistorialAccionesModel nuevoHistorial = historialAccionesService.guardarHistorial(historial);
