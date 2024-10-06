@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.apiweb.backend.Model.DocumentoModel;
 
 public interface IDocumentoRepository extends JpaRepository<DocumentoModel, Integer> {
-    
+    boolean existsByDescripcion(String descripcion);
 }

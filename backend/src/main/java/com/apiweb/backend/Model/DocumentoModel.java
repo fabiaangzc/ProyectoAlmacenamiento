@@ -30,14 +30,15 @@ public class DocumentoModel {
     @JoinColumn(name = "idCategoria")
     private CategoriaModel categoria;
 
-    @ManyToOne
-    @JoinColumn(name = "idEscribir")
-    private PuedeEscribirModel escribir;
-
     private String descripcion;
     private String url;
 
     @Enumerated(EnumType.STRING)
     private Visibilidad visibilidad;
+
+    private Double valoracionPromedio;
+    private Integer historialDescargas;
+    private Integer historialVisualizaciones;
+    private Integer totalComentarios;
     
 }

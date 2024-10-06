@@ -23,8 +23,6 @@ public class UsuarioModel {
     private String email;
     private String nickname;
     private String ciudad;
-    private String departamento;
-    private String preguntaSecreta;
-    private String respuestaSecreta;
+    private String departamento;     
 
 }

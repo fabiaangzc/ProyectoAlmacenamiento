@@ -22,9 +22,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class PuedeEscribirModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer idEscribir;
+
+    @ManyToOne
+    @JoinColumn(name = "idDocumento")
+    private UsuarioModel documento;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
