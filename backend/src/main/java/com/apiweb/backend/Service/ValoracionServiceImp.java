@@ -1,28 +1,42 @@
 package com.apiweb.backend.Service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.apiweb.backend.Exeption.RecursoNoEncontradoException;
 import com.apiweb.backend.Model.ValoracionModel;
 import com.apiweb.backend.Repository.IValoracionRepository;
+import java.util.Optional;
+
 @Service
-public class ValoracionServicelmp implements IValoracionService{
+public class ValoracionServiceImp implements IValoracionService{
     @Autowired
-    IValoracionRepository ValoracionRepository;
+    IValoracionRepository valoracionRepository;
+
     @Override
-    public String guardarValoracion(ValoracionModel valoracion) {
-<<<<<<< HEAD:backend/src/main/java/com/apiweb/backend/Service/ValoracionServiceImp.java
-        ValoracionRepository.save(valoracion);
-        return "Su valoracion se subió correctamente";
-=======
-        if (valoracion.getIdValoracion() != null && valoracionRepository.existsById(valoracion.getIdValoracion())) {
-            throw new IllegalArgumentException("Ya has valorado este documento");
-        }
-        if (valoracionRepository.existsByUsuario_IdUsuarioAndDocumento_IdDocumento(valoracion.getIdUsuario(), valoracion.getIdDocumento())) {
-            throw new IllegalArgumentException("Ya has valorado este documento");
-        }
+    public String guardarValoracion(ValoracionModel valoracion){
         valoracionRepository.save(valoracion);
-        return "La valoración fue dada correctamente";
->>>>>>> 0dc98072ca8529424783d78d45d8a3419d15ea12:backend/src/main/java/com/apiweb/backend/Service/ValoracionServicelmp.java
+        return "La valoración fue creada correctamente con ID " + valoracion.getIdValoracion();
+    }
+
+    @Override
+    public ValoracionModel buscarValoracionPorId(int valoracionId) {
+        Optional<ValoracionModel> valoracionRecuperada = valoracionRepository.findById(valoracionId);
+        return valoracionRecuperada.orElseThrow(() -> new RecursoNoEncontradoException(
+            "Error! La valoración con el Id " + valoracionId + ", no existe en la BD o el id es incorrecto"));
+    }
+
+    @Override
+    public String editarValoracion(int valoracionId, ValoracionModel valoracion) {
+        ValoracionModel valoracionExistente = buscarValoracionPorId(valoracionId);
+        valoracionExistente.setPuntuacion(valoracion.getPuntuacion()); 
+        valoracionRepository.save(valoracionExistente);
+        return "La valoración con ID " + valoracionId + " ha sido actualizada correctamente.";
+    }
+
+    @Override
+    public String eliminarValoracion(int valoracionId) {
+        ValoracionModel valoracionExistente = buscarValoracionPorId(valoracionId);
+        valoracionRepository.delete(valoracionExistente);
+        return "La valoración con ID " + valoracionId + " ha sido eliminada correctamente.";
     }
 }

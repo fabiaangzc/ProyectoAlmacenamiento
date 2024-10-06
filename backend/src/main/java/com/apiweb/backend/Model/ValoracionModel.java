@@ -4,13 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-
 
 @Data
 @AllArgsConstructor
@@ -22,12 +23,7 @@ public class ValoracionModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idValoracion;
-<<<<<<< HEAD
-    private Integer puntuacion; 
-    private LocalDate fecha; 
-    private Integer idUsuario; 
-    private Integer idDocumento; 
-=======
+    private LocalDate fecha;  
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
@@ -53,5 +49,4 @@ public class ValoracionModel {
     public Integer getIdDocumento() {
         return documento != null ? documento.getIdDocumento() : null;
     }
->>>>>>> 0dc98072ca8529424783d78d45d8a3419d15ea12
 }
