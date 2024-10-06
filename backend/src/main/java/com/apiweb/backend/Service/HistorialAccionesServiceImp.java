@@ -39,4 +39,10 @@ public class HistorialAccionesServiceImp implements IHistorialAccionesService {
         historialAccionesRepository.delete(historial);
         return "Historial con ID " + idHistorial + " ha sido eliminado.";
     }
+
+    @Override
+    public List<HistorialAccionesModel> buscarHistorialPorUsuario(int idUsuario) {
+        List<HistorialAccionesModel> historialusuario = historialAccionesRepository.findByUsuario_IdUsuario(idUsuario);
+        return historialusuario;
+    }
 }

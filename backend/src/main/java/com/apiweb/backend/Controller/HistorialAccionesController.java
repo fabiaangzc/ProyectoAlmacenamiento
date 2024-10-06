@@ -24,6 +24,12 @@ public class HistorialAccionesController {
         List<HistorialAccionesModel> historial = historialAccionesService.obtenerHistorialAcciones();
         return ResponseEntity.ok(historial);
     }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<List<HistorialAccionesModel>> obtenerHistorialPorUsuario(@PathVariable int idUsuario) {
+        List<HistorialAccionesModel> historial = historialAccionesService.buscarHistorialPorUsuario(idUsuario);
+        return ResponseEntity.ok(historial);
+    }
     
     @PostMapping("/crear")
     public ResponseEntity<HistorialAccionesModel> crearHistorial(@RequestBody HistorialAccionesModel historial) {

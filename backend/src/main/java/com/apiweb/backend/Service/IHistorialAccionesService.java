@@ -10,5 +10,6 @@ public interface IHistorialAccionesService {
     HistorialAccionesModel guardarHistorial(HistorialAccionesModel historial);
     HistorialAccionesModel buscarHistorialPorId(int idHistorial);
     String eliminarHistorial(int idHistorial);
+    List<HistorialAccionesModel> buscarHistorialPorUsuario(int idUsuario);
 
 }
