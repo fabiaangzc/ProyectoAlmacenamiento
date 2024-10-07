@@ -22,9 +22,13 @@ public class ComentarioController {
     @Autowired
     IComentarioService comentarioService;
 
-    @PostMapping("/insertar")
-    public ResponseEntity<String>crearComentario(@RequestBody ComentarioModel comentario){
-        return new ResponseEntity<>(comentarioService.guardarComentario(comentario), HttpStatus.OK);
+    @PostMapping("/crear")
+    public ResponseEntity<String> crearComentario(@RequestBody ComentarioModel comentario) {
+        try {
+            return new ResponseEntity<>(comentarioService.guardarComentario(comentario), HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarComentarioPorId(@PathVariable int id) {

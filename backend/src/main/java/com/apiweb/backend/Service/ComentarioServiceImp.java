@@ -15,11 +15,13 @@ public class ComentarioServiceImp implements IComentarioService{
     IComentarioRepository comentarioRepository;
 
     @Override
-    public String guardarComentario(ComentarioModel comenario) {
-        comentarioRepository.save(comenario);
-        return "El comentario ha sido creado correctamente con ID " + comenario.getIdComentario();
+    public String guardarComentario(ComentarioModel comentario) {
+        if (comentarioRepository.existsById(comentario.getIdComentario())) {
+            throw new IllegalArgumentException("No puedes usar este idComentario, ya está en uso.");
+        }
+        comentarioRepository.save(comentario);
+        return "El comentario ha sido creado correctamente";
     }
-
     @Override
     public ComentarioModel buscarComentarioPorId(int comentarioId) {
         Optional<ComentarioModel> comentarioRecuperado = comentarioRepository.findById(comentarioId);
