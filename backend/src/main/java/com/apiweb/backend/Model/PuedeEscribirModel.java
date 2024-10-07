@@ -25,17 +25,24 @@ public class PuedeEscribirModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer idEscribir;
+    private Integer idEscribir;
 
     @ManyToOne
     @JoinColumn(name = "idDocumento")
-    private UsuarioModel documento;
+    private DocumentoModel documento;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private UsuarioModel usuario;
 
     @Enumerated(EnumType.STRING)
-    public Rol rol;
+    private Rol rol;
 
+    public Integer getIdDocumento() {
+        return documento != null ? documento.getIdDocumento() : null;
+    }
+
+    public Integer getIdUsuario() {
+        return usuario != null ? usuario.getIdUsuario() : null;
+    }
 }

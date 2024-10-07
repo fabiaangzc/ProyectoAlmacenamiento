@@ -16,10 +16,15 @@ public class PuedeEscribirServiceImp implements IPuedeEscribirService {
     
     @Override
     public String crearPuedeEscribir(PuedeEscribirModel puedeEscribir) {
-       puedeEscribirRepository.save(puedeEscribir);
-       return "El usuario ya puede escribir";
+        if (puedeEscribirRepository.existsByUsuario_IdUsuarioAndDocumento_IdDocumento(
+                puedeEscribir.getIdUsuario(), puedeEscribir.getIdDocumento())) {
+            return "El usuario ya ha escrito este documento";
+        }
+
+        puedeEscribirRepository.save(puedeEscribir);
+        return "El usuario a escrito el documento";
     }
-    
+
     @Override
     @Transactional
     public String eliminarPuedeEscribir(Integer idEscribir) {

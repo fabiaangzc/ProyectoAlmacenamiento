@@ -18,7 +18,6 @@ public class ContrasenaServicelmp implements IContrasenaService {
     @Override
     @Transactional
     public void guardarContrasena(ContrasenaModel contrasena) {
-        // Verificar si la contraseña ha sido utilizada recientemente
         List<ContrasenaModel> recientes = contrasenaRepository.findTop3ByUsuarioOrderByFechaCreacionDesc(contrasena.getUsuario());
 
         for (ContrasenaModel reciente : recientes) {
@@ -27,25 +26,24 @@ public class ContrasenaServicelmp implements IContrasenaService {
             }
         }
 
-        // Expirar contraseñas anteriores
         expirarContraseñasAnteriores(contrasena.getUsuario().getIdUsuario());
 
-        // Guardar la nueva contraseña
         contrasenaRepository.save(contrasena);
     }
 
     @Override
     public void editarContrasena(int id, ContrasenaModel contrasena) {
-        ContrasenaModel existingContrasena = contrasenaRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Contraseña no encontrada"));
+        List<ContrasenaModel> recientes = contrasenaRepository.findTop3ByUsuarioOrderByFechaCreacionDesc(contrasena.getUsuario());
 
-        existingContrasena.setClave(contrasena.getClave());
-        existingContrasena.setEstado(contrasena.getEstado());
-        existingContrasena.setFechaCreacion(contrasena.getFechaCreacion());
-        existingContrasena.setPreguntaSecreta(contrasena.getPreguntaSecreta());
-        existingContrasena.setRespuestaSecreta(contrasena.getRespuestaSecreta());
+        for (ContrasenaModel reciente : recientes) {
+            if (reciente.getClave().equals(contrasena.getClave())) {
+                throw new IllegalArgumentException("La contraseña ha sido utilizada recientemente, por favor elija una nueva");
+            }
+        }
 
-        contrasenaRepository.save(existingContrasena);
+        expirarContraseñasAnteriores(contrasena.getUsuario().getIdUsuario());
+
+        contrasenaRepository.save(contrasena);
     }
 
     @Override
