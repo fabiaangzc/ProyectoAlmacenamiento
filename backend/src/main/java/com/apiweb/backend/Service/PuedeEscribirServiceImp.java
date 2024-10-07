@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import com.apiweb.backend.Model.PuedeEscribirModel;
 import com.apiweb.backend.Repository.IPuedeEscribirRepository;
 
-import jakarta.transaction.Transactional;
-
 @Service
 public class PuedeEscribirServiceImp implements IPuedeEscribirService {
 
@@ -25,14 +23,4 @@ public class PuedeEscribirServiceImp implements IPuedeEscribirService {
         return "El usuario a escrito el documento";
     }
 
-    @Override
-    @Transactional
-    public String eliminarPuedeEscribir(Integer idEscribir) {
-        if (puedeEscribirRepository.existsById(idEscribir)) {
-            puedeEscribirRepository.deleteById(idEscribir);
-            return "El usuario ya no puede escribir";
-        } else {
-            return "El usuario no existe.";
-        }
-    }
 }
