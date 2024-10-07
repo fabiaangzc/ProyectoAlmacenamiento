@@ -25,8 +25,12 @@ public class ValoracionController {
 
     @PostMapping("/crear")
     public ResponseEntity<String> crearValoracion(@RequestBody ValoracionModel valoracion) {
-        return new ResponseEntity<String>(valoracionService.guardarValoracion(valoracion), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(valoracionService.guardarValoracion(valoracion), HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarValoracionPorId(@PathVariable int id) {

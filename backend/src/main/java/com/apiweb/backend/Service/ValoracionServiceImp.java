@@ -14,10 +14,16 @@ public class ValoracionServiceImp implements IValoracionService{
 
     @Override
     public String guardarValoracion(ValoracionModel valoracion){
-        valoracionRepository.save(valoracion);
-        return "La valoración fue creada correctamente con ID " + valoracion.getIdValoracion();
-    }
+        boolean valoracionExistente = valoracionRepository.existsByUsuario_IdUsuarioAndDocumento_IdDocumento(
+            valoracion.getIdUsuario(), valoracion.getIdDocumento());
 
+        if (valoracionExistente) {
+            throw new IllegalArgumentException("El usuario ya ha hecho una valoración para este documento.");
+        }
+
+        valoracionRepository.save(valoracion);
+        return "La valoración ha sido creada correctamente";
+    }
     @Override
     public ValoracionModel buscarValoracionPorId(int valoracionId) {
         Optional<ValoracionModel> valoracionRecuperada = valoracionRepository.findById(valoracionId);
