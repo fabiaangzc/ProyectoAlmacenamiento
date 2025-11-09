@@ -1,10 +1,6 @@
 
 # DocTic
 
-## Rol
-
-Backend Developer (Java – Spring Boot)
-
 ## Resumen
 
 Sistema de gestión documental basado en un modelo entidad–relación. Permite la creación, lectura, almacenamiento y descarga de documentos, con control de acceso por niveles de privacidad y gestión de colaboradores por archivo.
